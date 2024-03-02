@@ -66,6 +66,13 @@ endif (${CMAKE_BUILD_TYPE_KNOWN})
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Release" "Debug" "MinSizeRel" "RelWithDebInfo")
 
 
+if (APPLE)
+  set(BUILD_CAFFE OFF)
+  set(Caffe_INCLUDE_DIRS "/opt/homebrew/Cellar/caffe/1.0_43/include/caffe")
+  set(Caffe_LIBS "/opt/homebrew/Cellar/caffe/1.0_43/lib/libcaffe.dylib")
+  MESSAGE(STATUS "MacOS set Caffe_INCLUDE_DIRS and Caffe_LIBS success.")
+endif (APPLE)
+
 ### FLAGS
 if (WIN32)
   # TODO -- Makeshift solution -- This prevents rerunning build again
